@@ -18,6 +18,10 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('http://generator.a.navi.bz/inst-wsl-docker-bota.ps1'))
 ```
 
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/dooioomoo/aiws/main/inst-wsl-docker-bota.ps1'))
+```
+
 ## 2021年1月15日
 
 1.在需要安装docker boa的操作系统中，找到想要安装的分区，新建一个目录，例如：docker
