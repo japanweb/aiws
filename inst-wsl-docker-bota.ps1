@@ -1,4 +1,4 @@
-﻿$hello = "现在开始准备安装系统环境`nAIWS主要用于基于Centos和docker的前端开发和后台开发环境`n其中包括WSL2\DOCKER\VSCODE\GIT\COMPOSER\BOTA...等`n它需要使用到管理员权限以安装来自微软的官方补丁`n及下载必要的系统组件，请使用或同意脚本的管理身份请求!`n"
+$hello = "现在开始准备安装系统环境`nAIWS主要用于基于Centos和docker的前端开发和后台开发环境`n其中包括WSL2\DOCKER\VSCODE\GIT\COMPOSER\BOTA...等`n它需要使用到管理员权限以安装来自微软的官方补丁`n及下载必要的系统组件，请使用或同意脚本的管理身份请求!`n"
 $centosFile = "https://github.com/wsldl-pg/CentWSL/releases/download/7.0.1907.3/CentOS7.zip"
 $centosExe = "CentOS7.exe"
 $installDev = "C"
@@ -164,7 +164,7 @@ function step2() {
 
     
 
-    Set-Key $regrun $restartkey "powershell start-process PowerShell -verb runas -argument '$PSCommandPath clearFile'"
+    Set-Key $regrun $restartkey "powershell start-process PowerShell -verb runas -argument '$PSCommandPath clearfile'"
     clearFile
 }
 
@@ -179,8 +179,8 @@ function init() {
             step2
             # $SecureInput = Read-Host -Prompt "`n安装完成，按任意键进入第三阶段..." -AsSecureString
         }
-        "step3" {
-            clearFile
+        "clearfile" {
+            clearfile
         }
         default {
             startInst;
@@ -188,7 +188,7 @@ function init() {
     }
 }
 
-function clearFile() {
+function clearfile() {
     $runPath = $PSCommandPath | Split-Path -Parent;
     cd $runPath
     Write-Output "`n WSL安装第三阶段 `n====================="
