@@ -197,6 +197,7 @@ function clearFile() {
     Remove-Item -Path ".\$wsl.zip" -Force
     Remove-Item -Path ".\inst-wsl-bota.ps1" -Force
     Remove-Item -Path ".\install.sh" -Force
+    <#
     if (!(Test-Path ".\autorunwsl.zip")) {
         Write-Output "`n`n下载 WSL自动运行脚本 ..."
         $downfile = "--no-check-certificate https://github.com/troytse/wsl-autostart/archive/master.zip -O .\autorunwsl.zip"
@@ -212,7 +213,9 @@ function clearFile() {
         Set-Key $regrun "WSLAutostart" "$runPath\wsl-autostart-master\start.vbs"
         Write-Output "/etc/init.d/bt" "/etc/init.d/mysqld" "/etc/init.d/nginx" "/etc/init.d/php-fpm-74" "/etc/init.d/mount" "/etc/init.d/sshd" | Out-File -FilePath ".\wsl-autostart-master\commands.txt"
     }
+    
     Remove-Item -Path ".\autorunwsl.zip" -Force
+    #>
     Write-Host -NoNewLine "`n安装完成，按任意键结束..."
     $null = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
