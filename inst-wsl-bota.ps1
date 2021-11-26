@@ -197,6 +197,14 @@ function clearFile() {
     Remove-Item -Path ".\$wsl.zip" -Force
     Remove-Item -Path ".\inst-wsl-bota.ps1" -Force
     Remove-Item -Path ".\install.sh" -Force
+    wsl sh -c "yum install openssh-server -y | sshd-keygen"
+    wsl sh -c "mv /usr/bin/systemctl /usr/bin/systemctl.old -f"
+    wsl sh -c "curl https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl.py > /usr/bin/systemctl"
+    wsl sh -c "sudo chmod +x /usr/bin/systemctl"
+    wsl sh -c "systemctl restart sshd"
+    wsl sh -c "echo '#! /bin/bash' > /etc/init.wsl | echo 'systemctl start bt' >> /etc/init.wsl | echo 'systemctl start sshd' >> /etc/init.wsl | echo 'systemctl start dbus' >> /etc/init.wsl"
+    Write-Output "Set ws = CreateObject(`"Wscript.Shell`")" "ws.run `"wsl -d baota -u root /etc/init.wsl`", vbhide" | Out-File -FilePath "$($env:USERPROFILE)\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startwsl.vbs"
+
     <#
     if (!(Test-Path ".\autorunwsl.zip")) {
         Write-Output "`n`n下载 WSL自动运行脚本 ..."
