@@ -198,6 +198,7 @@ function clearFile() {
     Remove-Item -Path ".\inst-wsl-bota.ps1" -Force
     Remove-Item -Path ".\install.sh" -Force
     wsl sh -c "rm -f /www/server/panel/data/admin_path.pl && mv /www/server/panel/data/bind.pl /www/server/panel/data/bind.pl.bak"
+    wsl sh -c "sed -i 's/set_panel_username()/set_panel_username(sys.argv[2])/' /www/server/panel/tools.py && cd /www/server/panel && python tools.py username baota && cd /www/server/panel && python tools.py panel 123456"
     wsl sh -c "yum install openssh-server -y | sshd-keygen"
     wsl sh -c "mv /usr/bin/systemctl /usr/bin/systemctl.old -f"
     wsl sh -c "curl https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl.py > /usr/bin/systemctl"
