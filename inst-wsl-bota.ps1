@@ -207,6 +207,7 @@ function clearFile() {
     wsl sh -c "echo '#! /bin/bash' > /etc/init.wsl | echo 'systemctl start bt' >> /etc/init.wsl | echo 'systemctl start nginx' >> /etc/init.wsl | echo 'systemctl start mysqld' >> /etc/init.wsl | echo 'systemctl start pure-ftpd' >> /etc/init.wsl | echo 'systemctl start sshd' >> /etc/init.wsl | echo 'systemctl start dbus' >> /etc/init.wsl"
     wsl sh -c "chmod +x /etc/init.wsl"
     Write-Output "Set ws = CreateObject(`"Wscript.Shell`")" "ws.run `"wsl -d baota -u root /etc/init.wsl`", vbhide" | Out-File -FilePath "$($env:USERPROFILE)\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startwsl.vbs"
+    Write-Output "localhostForwarding=True" | Out-File -FilePath "$($env:USERPROFILE)\.wslconfig"
 
     <#
     if (!(Test-Path ".\autorunwsl.zip")) {
