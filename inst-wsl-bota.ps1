@@ -207,7 +207,7 @@ function clearFile() {
     wsl sh -c "echo '[nameserver]' > /etc/resolv.conf | echo 'nameserver 8.8.8.8' >> /etc/resolv.conf | echo 'nameserver 8.8.4.4' >> /etc/resolv.conf"
     wsl sh -c "sudo chmod +x /usr/bin/systemctl"
     wsl sh -c "systemctl restart sshd"
-    wsl sh -c "echo '#! /bin/bash' > /etc/init.wsl | echo 'systemctl start bt' >> /etc/init.wsl | echo 'systemctl start nginx' >> /etc/init.wsl | echo 'systemctl start mysqld' >> /etc/init.wsl | echo 'systemctl start pure-ftpd' >> /etc/init.wsl | echo 'systemctl start sshd' >> /etc/init.wsl | echo 'systemctl start dbus' >> /etc/init.wsl | echo 'sudo bash -c \""echo \\\""nameserver 8.8.8.8\\\"" > /etc/resolv.conf\""' >> /etc/init.wsl"
+    wsl sh -c "echo '#! /bin/bash' > /etc/init.wsl | echo 'systemctl start bt' >> /etc/init.wsl | echo 'systemctl start nginx' >> /etc/init.wsl | echo 'systemctl start mysqld' >> /etc/init.wsl | echo 'systemctl start pure-ftpd' >> /etc/init.wsl | echo 'systemctl start sshd' >> /etc/init.wsl | echo 'systemctl start dbus' >> /etc/init.wsl | echo 'sudo bash -c \""echo \\\""nameserver 8.8.8.8\\\"" >> /etc/resolv.conf\""' >> /etc/init.wsl | echo 'sudo bash -c \""echo \\\""nameserver 8.8.4.4\\\"" >> /etc/resolv.conf\""' >> /etc/init.wsl | echo 'service network restart' >> /etc/init.wsl"
     wsl sh -c "chmod +x /etc/init.wsl"
     Write-Output "Set ws = CreateObject(`"Wscript.Shell`")" "ws.run `"wsl -d baota -u root /etc/init.wsl`", vbhide" | Out-File -FilePath "$($env:USERPROFILE)\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\startwsl.vbs"
     Write-Output "localhostForwarding=True" | Out-File -FilePath "$($env:USERPROFILE)\.wslconfig"
