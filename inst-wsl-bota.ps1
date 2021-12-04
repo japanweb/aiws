@@ -203,7 +203,7 @@ function clearFile() {
     wsl sh -c "mv /usr/bin/systemctl /usr/bin/systemctl.old -f"
     wsl sh -c "curl https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl.py > /usr/bin/systemctl"
     wsl sh -c "echo '[network]' > /etc/wsl.conf | echo 'generateResolvConf=false' >> /etc/wsl.conf"
-    wsl sh -c "mv /etc/resolv.conf /etc/resolv.conf.wsl"
+    # wsl sh -c "mv /etc/resolv.conf /etc/resolv.conf.wsl"
     wsl sh -c "echo '[nameserver]' > /etc/resolv.conf | echo 'nameserver 8.8.8.8' >> /etc/resolv.conf | echo 'nameserver 8.8.4.4' >> /etc/resolv.conf"
     wsl sh -c "sudo chmod +x /usr/bin/systemctl"
     wsl sh -c "systemctl restart sshd"
